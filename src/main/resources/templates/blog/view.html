@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>view</title>
+</head>
+<body>
+<a th:href="@{/}">Home</a><br><br>
+<a th:href="@{/blog}">Back to list</a>
+<h3>View blog</h3>
+
+<label><b>Title</b></label><br>
+<p th:text="${blog.title}"/></p>
+
+<label><b>Category</b></label><br>
+<p th:text="${blog.category.categoryName}"/></p>
+
+<label><b>Content</b></label><br>
+<p th:text="${blog.content}"/></p>
+
+<button type="button"><a th:href="@{/blog/edit/{id}(id = ${blog.id})}">Edit</a></button>
+<br><br>
+<button type="button"><a th:href="@{/blog/delete/{id}(id = ${blog.id})}">Delete</a></button>
+</body>
+</html>

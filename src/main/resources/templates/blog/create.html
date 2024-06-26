@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <title>create</title>
+</head>
+<body>
+<a th:href="@{/}">Home</a><br><br>
+<a th:href="@{/blog}">Back to list</a>
+<h3>Create New Blog</h3>
+<form id="createForm" th:action="@{/blog/create}" method="post" th:object="${blog}">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td><b>Title</b></td>
+            <td><input id="title" type="text" th:field="*{title}"/></td>
+        </tr>
+
+        <tr>
+            <td><b>Category</b></td>
+            <td>
+                <select id="category" th:name="cateId" th:field="*{category}">
+                    <option th:each="cate : ${cateList}" th:value="${cate.categoryId}" th:text="${cate.categoryName}"></option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td><b>Content</b></td>
+            <td><textarea id="content" type="text" th:field="*{content}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Save"></td>
+        </tr>
+    </table>
+</form>
+</body>
+
+</html>
