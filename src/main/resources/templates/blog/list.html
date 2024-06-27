@@ -2,20 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
-          crossorigin="anonymous">
-    <title>list</title>
+    <title>Blog</title>
 </head>
 <body>
-<a th:href="@{/}">Home</a><br><br>
-<a th:href="@{/blog/create}">Create New Blog</a>
-<h3>Blog List</h3>
-<form th:action="@{/blog}" method="get">
-    <input type="text" th:name="search" th:value="${search}" placeholder="input some text">
-    <input type="submit" value="Search">
-</form>
+<a href="/">Home</a>
+<br><br>
+<a href="/blog/create" th:text="#{create.title}"></a>
+<h3 th:text="#{list.title}"></h3>
+
 <table>
     <tr>
         <th>Title</th>
@@ -24,27 +18,16 @@
         <th>Edit</th>
         <th>Delete</th>
     </tr>
-    <th:block th:each="blog : ${eList}">
+    <th:block th:each="el : ${eList}">
         <tr>
-            <td th:text="${blog.title}"></td>
-            <td th:if="${blog.category != null}" th:text="${blog.category.categoryName}"></td>
-            <td th:if="${blog.category == null}" th:text="${'NULL'}"></td>
-            <td><a th:href="@{/blog/view/{id} (id=${blog.id})}">View</a></td>
-            <td><a th:href="@{/blog/edit/{id} (id=${blog.id})}">Edit</a></td>
-            <td><a th:href="@{/blog/delete/{id} (id=${blog.id})}">Delete</a></td>
+            <td th:text="${el.title}"></td>
+            <td th:if="${el.category != null}" th:text="${el.category.categoryName}"></td>
+            <td th:if="${el.category == null}" th:text="${'NULL'}"></td>
+            <td><a th:href="@{/blog/view/{id} (id=${el.id})}">View</a></td>
+            <td><a th:href="@{/blog/edit/{id} (id=${el.id})}">Edit</a></td>
+            <td><a th:href="@{/blog/delete/{id} (id=${el.id})}">Delete</a></td>
         </tr>
     </th:block>
-    <br>
-    <!--  Paging and Sorting -->
-    <div >
-        <br>
-        <a th:href="@{'/blog'(page=${eList.number - 1}, search=${search})}" th:if="${eList.hasPrevious()}"><i
-                class="fas fa-arrow-circle-left"></i></a>
-        <span th:text="${eList.number + 1}"></span>/<span th:text="${eList.totalPages}"></span>
-        <a th:href="@{'/blog'(page=${eList.number + 1}, search=${search})}" th:if="${eList.hasNext()}"><i
-                class="fas fa-arrow-circle-right"></i></a>
-    </div>
-
 </table>
 
 <p style="color: red" th:if="${msg}">

@@ -1,11 +1,33 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>Title</title>
 </head>
 <body>
 <a href="/blog">Blog List</a><br><br>
-<a href="/category">Category List</a>
+<a href="/category">Category List</a><br><br>
+<lable>Language:</lable>
+<select id="language">
+    <option value="">Language</option>
+    <option id="selected" selected></option>
+    <option value="vn" th:text="#{lang.vn}"></option>
+    <option value="en" th:text="#{lang.en}"></option>
+</select>
+
+
 </body>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#language").change(function () {
+            let selectOption = $("#language option:selected").val();
+            if(selectOption !== ""){
+                window.location.replace("?lang=" + selectOption);
+            }
+            $("#language option:selected").val(selectOption);
+        });
+    });
+</script>
+
 </html>

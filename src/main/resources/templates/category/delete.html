@@ -6,15 +6,16 @@
 </head>
 <body>
 <h1>Delete Category</h1>
-<a th:href="@{/}">Home</a>
-<a th:href="@{/category}">Back to list</a>
+<p>
+    <a href="/category">Back to list</a>
+</p>
 
-<form th:action="@{/category/delete}" method="post" th:object="${category}">
+<form th:action="@{/category/delete}" method="post" th:object="${el}" >
     <input th:type="hidden" name="id" th:field="*{categoryId}">
     <table>
         <tr>
-            <td>Category Name:</td>
-            <td th:text="${category.categoryName}"></td>
+            <td>First name:</td>
+            <td th:text="${el.categoryName}"></td>
         </tr>
 
         <tr>

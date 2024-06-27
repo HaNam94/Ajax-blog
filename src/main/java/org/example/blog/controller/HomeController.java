@@ -10,4 +10,11 @@ public class HomeController {
     public String getHomePage(){
         return "/home/index";
     }
+
+//    @GetMapping("/lang={lan}")
+//    public ModelAndView getLanguage(@PathVariable("lan") String lan){
+//        ModelAndView modelAndView = new ModelAndView("/home/index");
+//        modelAndView.addObject("lang", lan);
+//        return modelAndView;
+//    }
 }

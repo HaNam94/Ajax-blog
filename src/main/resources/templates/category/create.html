@@ -5,11 +5,12 @@
     <title>create</title>
 </head>
 <body>
-<h1>Create New Category</h1>
-<a th:href="@{/}">Home</a>
-<a th:href="@{/category}">Back to list</a>
+<h1>Create Category</h1>
+<p>
+    <a href="/category">Back to list</a>
+</p>
 
-<form th:action="@{/category/create}" method="post" th:object="${category}" >
+<form th:action="@{/category/create}" method="post" th:object="${el}" >
     <table>
         <tr>
             <td>Category Name:</td>

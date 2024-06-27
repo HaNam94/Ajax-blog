@@ -1,12 +1,12 @@
 package org.example.blog.controller;
 
+import org.example.blog.model.Category;
+import org.example.blog.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.example.blog.model.Category;
-import org.example.blog.service.CategoryService;
 
 @Controller
 @RequestMapping("/category")
@@ -41,7 +41,7 @@ public class CategoryController {
     @GetMapping("/create")
     public ModelAndView getCreatePage(){
         ModelAndView modelAndView = new ModelAndView(CREATE_PAGE);
-        modelAndView.addObject("category", new Category());
+        modelAndView.addObject("el", new Category());
         return modelAndView;
     }
 
@@ -56,7 +56,7 @@ public class CategoryController {
     @GetMapping("/edit/{id}")
     public ModelAndView getEditPage(@PathVariable int id){
         ModelAndView modelAndView = new ModelAndView(EDIT_PAGE);
-        modelAndView.addObject("category", categoryService.findById(id));
+        modelAndView.addObject("el", categoryService.findById(id));
         return modelAndView;
     }
 
@@ -71,7 +71,7 @@ public class CategoryController {
     @GetMapping("/delete/{id}")
     public ModelAndView getDeletePage(@PathVariable int id){
         ModelAndView modelAndView = new ModelAndView(DELETE_PAGE);
-        modelAndView.addObject("category", categoryService.findById(id));
+        modelAndView.addObject("el", categoryService.findById(id));
         return modelAndView;
     }
 

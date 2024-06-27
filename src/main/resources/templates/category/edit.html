@@ -6,14 +6,15 @@
 </head>
 <body>
 <h1>Edit Category</h1>
-<a th:href="@{/}">Home</a><br><br>
-<a th:href="@{/category}">Back to list</a>
+<p>
+    <a href="/category">Back to list</a>
+</p>
 
-<form th:action="@{/category/edit}" method="post" th:object="${category}" >
+<form th:action="@{/category/edit}" method="post" th:object="${el}" >
     <input th:type="hidden" name="id" th:field="*{categoryId}">
     <table>
         <tr>
-            <td>Category Name:</td>
+            <td>Category name:</td>
             <td><input type="text" th:field="*{categoryName}"/></td>
         </tr>
 
